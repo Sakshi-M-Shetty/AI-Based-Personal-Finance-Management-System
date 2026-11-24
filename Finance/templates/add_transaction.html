@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Add Transaction</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(120deg,#4facfe,#00f2fe);
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+width:350px;
+border-radius:10px;
+box-shadow:0px 6px 20px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+color:#2c3e50;
+}
+
+label{
+display:block;
+text-align:left;
+margin-top:10px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:5px;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:14px;
+}
+
+button{
+margin-top:20px;
+width:100%;
+padding:12px;
+border:none;
+background:#2c3e50;
+color:white;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#1a252f;
+}
+
+.back{
+margin-top:15px;
+display:block;
+text-decoration:none;
+color:#2c3e50;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Add Transaction</h2>
+
+<form method="POST">
+
+<label>Description</label> <input type="text" name="description" placeholder="Enter transaction description" required>
+
+<label>Amount</label> <input type="number" name="amount" placeholder="Enter amount" required>
+
+<button type="submit">Add Transaction</button>
+
+</form>
+
+<a class="back" href="/dashboard">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

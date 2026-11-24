@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.container{
+width:90%;
+margin:auto;
+margin-top:30px;
+}
+
+.chart-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.chart-card{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0px 4px 12px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+canvas{
+max-width:100%;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+</style>
+
+<div class="container">
+
+<h2>Financial Reports & AI Analytics</h2>
+
+<div class="chart-grid">
+
+<div class="chart-card">
+<h3>Expense Categories</h3>
+<canvas id="pieChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Monthly Expense Trend</h3>
+<canvas id="lineChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Income vs Expense</h3>
+<canvas id="barChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Model Accuracy</h3>
+<canvas id="accuracyChart"></canvas>
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+/* ---------------- PIE CHART ---------------- */
+
+new Chart(document.getElementById("pieChart"), {
+    type: "bar",
+    data: {
+        labels: {{ months|tojson }},
+        datasets: [{
+            label: "Monthly Expenses",
+            data: {{ monthly_expenses|tojson }}
+        }]
+    }
+});
+
+/* ---------------- LINE CHART ---------------- */
+
+var months = {{ months | tojson }};
+var monthlyExpenses = {{ monthly_expenses | tojson }};
+
+new Chart(document.getElementById("lineChart"),{
+
+type:"line",
+
+data:{
+labels: months,
+datasets:[{
+label:"Monthly Expenses",
+data: monthlyExpenses,
+borderColor:"#3498db",
+fill:false
+}]
+}
+
+});
+
+
+/* ---------------- BAR CHART ---------------- */
+
+var income = {{ income | tojson }};
+var expense = {{ expense | tojson }};
+
+new Chart(document.getElementById("barChart"),{
+
+type:"bar",
+
+data:{
+labels:["Income","Expense"],
+datasets:[{
+label:"Financial Comparison",
+data:[income,expense],
+backgroundColor:["#2ecc71","#e74c3c"]
+}]
+}
+
+});
+
+
+/* ---------------- ACCURACY GRAPH ---------------- */
+
+new Chart(document.getElementById("accuracyChart"),{
+
+type:"bar",
+
+data:{
+labels:["Random Forest","K-Means","Linear Regression"],
+datasets:[{
+label:"Model Accuracy (%)",
+data:[92,85,88],
+backgroundColor:[
+"#1abc9c",
+"#f39c12",
+"#9b59b6"
+]
+}]
+}
+
+});
+
+</script>
+
+{% endblock %}

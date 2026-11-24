@@ -1,0 +1,14 @@
+description,amount,category,month
+grocery shopping,500,Food,1
+bus ticket,40,Transport,1
+electricity bill,1200,Utilities,1
+restaurant dinner,800,Food,2
+hospital bill,3000,Healthcare,2
+movie ticket,250,Entertainment,3
+fuel refill,1500,Transport,3
+water bill,600,Utilities,4
+shopping mall,2000,Shopping,4
+medical store,700,Healthcare,5
+pizza order,400,Food,5
+online subscription,300,Entertainment,6
+Salary account,1200,Income,4

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Finance Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6f9;
+}
+
+.navbar{
+background:#2c3e50;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.container{
+width:90%;
+margin:auto;
+margin-top:30px;
+}
+
+.summary{
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+width:30%;
+border-radius:8px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#2c3e50;
+color:white;
+}
+
+button{
+padding:10px 20px;
+background:#2c3e50;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin:10px;
+}
+
+.actions{
+margin-bottom:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<h2>AI-Based Personal Finance Management System</h2>
+
+<div>
+<a href="/dashboard">Dashboard</a>
+<a href="/add">Add Transaction</a>
+<a href="/reports">Reports</a>
+<a href="/logout">Logout</a>
+</div>
+
+</div>
+
+<div class="container">
+
+<h2>Financial Dashboard</h2>
+
+<div class="summary">
+
+<div class="card">
+<h3>Total Transactions</h3>
+<p>{{data|length}}</p>
+</div>
+
+<div class="card">
+<h3>Predicted Next Expense</h3>
+<p>{{prediction}}</p>
+</div>
+
+<div class="card">
+<h3>AI Insight</h3>
+<p>Monitor your spending patterns and control expenses.</p>
+</div>
+
+</div>
+
+<div class="actions">
+
+<a href="/add">
+<button>Add Transaction</button>
+</a>
+
+<a href="/reports">
+<button>View Reports</button>
+</a>
+
+</div>
+
+<h3>Transaction History</h3>
+
+
+
+<table>
+<tr>
+<th>ID</th>
+<th>Description</th>
+<th>Amount</th>
+
+<th>Date</th>
+<th>Actions</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{row.id}}</td>
+<td>{{row.description}}</td>
+<td>{{row.amount}}</td>
+
+<td>{{row.date}}</td>
+
+<td>
+<a href="/edit/{{row.id}}"><button>Edit</button></a>
+<a href="/delete/{{row.id}}"><button>Delete</button></a>
+</td>
+
+</tr>
+{% endfor %}
+</table>
+
+<br>
+
+<a href="/export_excel"><button>Export Excel</button></a>
+<a href="/export_pdf"><button>Export PDF</button></a>
+
+</div>
+
+</body>
+</html>
